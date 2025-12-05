@@ -1,0 +1,23 @@
+              +----------------------+
+              |       Subject        |
+              |----------------------|
+              | + add(Observer)      |
+              | + remove(Observer)   |
+              | + notifyUsers()      |
+              +----------^-----------+
+                         |
+                         |
+           +-------------+-----------------+
+           |                               |
++----------------------------+   +----------------------------+
+|     WeatherStation         |   |       Observer             |
+| (Concrete Subject)         |   |----------------------------|
+| - weather : String         |   | + update(weather): void    |
+| - observers : List         |   +--------------^-------------+
+| + setWeather()             |                  |
+| + notifyUsers()            |                  |
++----------------------------+     +-----------------------------+
+                                   |  PhoneObs / TVObs (Concrete)|
+                                   | - weather : String           |
+                                   | + update()                   |
+                                   +------------------------------+

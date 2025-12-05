@@ -1,0 +1,55 @@
+                        ┌────────────────────────────────────────────────┐
+                        │      StudentBuilder                            │ «abstract»
+                        ├────────────────────────────────────────────────┤
+                        │ + rollno: int                                  │
+                        │ + age: int                                     │
+                        │ + name: String                                 │
+                        │ + fathername: String                           │
+                        │ + mothername: String                           │
+                        │ + subjects: List<String>                       │
+                        ├────────────────────────────────────────────────┤
+                        │ + setRollno(int): StudentBuilder               │
+                        │ + setAge(int): StudentBuilder                  │
+                        │ + setName(String): StudentBuilder              │
+                        │ + setFname(String): StudentBuilder             │
+                        │ + setMname(String): StudentBuilder             │
+                        │ + setSubjects(): StudentBuilder «abstract»     │
+                        │ + build(): Student                             │
+                        └────────────────────────────────────────────────┘
+                                   ▲
+                                   │
+                 ┌─────────────────┴──────────────────┐
+                 │                                    │
+┌────────────────────────────┐         ┌─────────────────────────────┐
+│  EngineeringStudentBuilder │         │    MBAStudentBuilder        │
+├────────────────────────────┤         ├─────────────────────────────┤
+│ (inherits StudentBuilder)  │         │ (inherits StudentBuilder)   │
+├────────────────────────────┤         ├─────────────────────────────┤
+│ + setSubjects(): StudentBuilder │     │ + setSubjects(): StudentBuilder │
+└────────────────────────────┘         └─────────────────────────────┘
+
+
+                ┌──────────────────────────┐
+                │          Student         │
+                ├──────────────────────────┤
+                │ - rollno: int            │
+                │ - age: int               │
+                │ - name: String           │
+                │ - fathername: String     │
+                │ - mothername: String     │
+                │ - subjects: List<String> │
+                ├──────────────────────────┤
+                │ + toString(): String     │
+                └───────────▲──────────────┘
+                            │
+                            │ created by build()
+                            │
+                 ┌──────────────────────────┐
+                 │         Director         │
+                 ├──────────────────────────┤
+                 │ - studentbuilder: StudentBuilder │
+                 ├──────────────────────────┤
+                 │ + createStudent(): Student │
+                 │ - createEngineeringStudent(): Student │
+                 │ - createMBAStudent(): Student       │
+                 └──────────────────────────┘
